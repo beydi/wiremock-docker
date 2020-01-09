@@ -1,0 +1,17 @@
+version : '3.3'
+
+services:
+  wiremock:
+    image: rodolpheche/wiremock
+    command: --https-port 8443
+    deploy:
+      resources:
+        reservations:
+          cpus: '0.50'
+    container_name: wiremock
+    hostname: wiremock
+    ports:
+            - "8443:8443"
+    volumes:
+            - {PROJECT_PATH}/mappings/:/home/wiremock/mappings/
+            - {PROJECT_PATH}/__file/:/home/wiremock/__files/
